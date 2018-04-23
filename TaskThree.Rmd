@@ -1,0 +1,30 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+n = 10000
+
+lengthOf <- 0
+id_string <- "009"
+  for (j in 1:1000){
+    vectr <- sample(0:9, n, replace=T);
+    vectr_string <- paste(vectr, collapse = "")
+        if (grepl(id_string, vectr_string))
+        {
+          for(i in 1:998){
+            if(vectr[i] == 0 && vectr[i+1] == 0 && vectr[i+2] == 9 ){
+              lengthOf <- i + lengthOf
+            }
+          }
+        }
+  }
+  cat("Numerically the expected length of the sequence obtained: "); p <- lengthOf/1000; cat(p); cat("\n\n")
+
+```
+
