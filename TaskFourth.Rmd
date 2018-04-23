@@ -1,0 +1,25 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+n = 9
+N = 2000
+k = 7
+means = colMeans(matrix(sample(0:k, N*n, replace=T), n))# array of the data
+m = sum(means)/N
+sd1 = sqrt(var(means))
+pn <- pnorm(seq(min(means), max(means), by=.0001), mean=m, sd=sd1)
+Fd <- ecdf(means)# the empirical cumulative distribution function 
+plot(seq(min(means), max(means), by=.0001), pn, col = "blue")
+lines(Fd)
+f <- seq(m - (3*sqrt(v)), m + (3*sqrt(v)), length.out=200)
+d = max(abs(Fd(f) - pnorm(f, mean = m, sd = sqrt(v))))
+print(d)
+```
+
