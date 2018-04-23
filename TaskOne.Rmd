@@ -1,0 +1,31 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+```{r}
+n <- c(100, 200, 1000)
+
+for (i in n)
+{
+  check <- 0
+  cat(i); cat(" sequence elements\n")
+  for (j in 1:1000)
+  {    id_string <- "009" #paste(id_number, collapse = "")
+    
+    # sequence of random digits
+
+    vectr <- sample(0:9, n, replace=T);
+    vectr_string <- paste(vectr, collapse = "")
+    
+    # checking if id exists in sequence
+    if (grepl(id_string, vectr_string))
+    {
+      check <- check + 1
+    }
+  }
+  # calculating the probability using Law of large numbers
+  cat("The probability is: "); p <- check/1000; cat(p); cat("\n\n")
+
+}
+```
+
